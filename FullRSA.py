@@ -65,6 +65,7 @@ def decrypt():
             print("Invalid value.")
             continue
 
+    print("Finding air speed velocity of an unladen swallow(d), this may take a while.")  
     d = find_d(p,q,e)
     print("Private d: ", d)
 
@@ -78,14 +79,19 @@ def is_prime(p):
 def find_d(p,q,e):
     import math
     d = 0
-    Q = 0
-    n = (p-1)*(q-1)
-    while(q < 1000):
-        d = ((n * Q) + 1) / e
-        #print('Q: ', Q)
-        if(d == math.floor(d)):
-            return int(d)
-            break
+    Q = 1
+    n = int((p-1)*(q-1))
+##    Q = (-1 % e) / n
+##    print(Q)
+##    d = divmod(((n * Q) + 1),e)
+##    print(d[0])
+##    return int(d[0])
+    while True:
+        Q = (-1 % e) / n 
+        d = divmod(((n * Q) + 1),e)
+        if d[1] == 0:
+            return d[0]
+        print('d: ', d[1])
         Q += 1
 
 def find_Es(p,q):

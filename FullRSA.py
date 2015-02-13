@@ -65,7 +65,7 @@ def decrypt():
             print("Invalid value.")
             continue
 
-    print("Finding air speed velocity of an unladen swallow(d), this may take a while.")  
+    print("Finding d...")
     d = find_d(p,q,e)
     print("Private d: ", d)
 
@@ -87,11 +87,10 @@ def find_d(p,q,e):
 ##    print(d[0])
 ##    return int(d[0])
     while True:
-        Q = (-1 % e) / n 
-        d = divmod(((n * Q) + 1),e)
-        if d[1] == 0:
-            return d[0]
-        print('d: ', d[1])
+        d = ((n*Q)+1)%e
+        if d == 0:
+            print(((n*Q)+1)%e)
+            return int(((n*Q)+1)//e)
         Q += 1
 
 def find_Es(p,q):

@@ -6,5 +6,8 @@ def oddCount(start):
         orderedNums.append(numbers[i])
 oddCount(0)
 numbers.reverse()
-oddCount(0)
+if len(numbers)%2==0:
+    oddCount(0)
+else:
+    oddCount(1)
 print(' '.join(orderedNums))
